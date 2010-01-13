@@ -1,4 +1,4 @@
-WWW-UserAgent-Random version 0.01
+WWW-UserAgent-Random version 0.02
 =================================
 
 WWW::UserAgent::Random allows to generate random User Agent.
@@ -16,7 +16,7 @@ To install this module type the following:
 
 COPYRIGHT AND LICENCE
 
-Copyright (C) 2009 by Matteo Cantoni
+Copyright (C) 2009,2010 by Matteo Cantoni
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.8.8 or,

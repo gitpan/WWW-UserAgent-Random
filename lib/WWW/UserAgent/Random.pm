@@ -10,7 +10,7 @@ use Exporter ();
 @ISA = qw(Exporter);
 @EXPORT = qw(rand_ua);
 
-$VERSION = '0.01';
+$VERSION = '0.02';
 $LIBRARY = __PACKAGE__;
 
 $|=1;
@@ -186,6 +186,11 @@ sub rand_ua {
 	my @array = keys %agents;
 		$agent = $array[ rand @array ];	
 	}
+	
+	if ($agent =~ /^browsers$/){
+		my @array = ['linux','macintosh','windows','openbsd','freebsd','netbsd','os2','beos','sunos','amiga','others','phones','consoles'];
+		$agent = $array[ rand @array ];
+	}
 
 	my $rarray = scalar @{$agents{$agent}};
 	$rarray = int(rand($rarray));
@@ -202,7 +207,7 @@ WWW::UserAgent::Random - Perl extension to generate random User Agent
 
 =head1 SYNOPSIS
 
-  use WWW-UserAgent-Random;
+  use WWW::UserAgent::Random;
 
   my $user_agent = rand_ua("macintosh");
 
@@ -210,7 +215,9 @@ WWW::UserAgent::Random - Perl extension to generate random User Agent
 
 WWW::UserAgent::Random allows to generate random User Agent.
 
-If you don't specify a category (linux, macintosh, windows, openbsd, freebsd, netbsd, os2, beos, sunos, crawlers, link_checkers, amiga, others, validators, feed_readers, phones, consoles, proxy), then the rand_ua function will return ones random.
+If you don't specify a category (linux, macintosh, windows, openbsd, freebsd, netbsd, os2, beos, sunos, crawlers, link_checkers, amiga, others, validators, feed_readers, phones, consoles, proxy, browsers), then the rand_ua function will return ones random.
+
+The category 'browsers' includes all browsers in other categories, but not robots.
 
 =head1 SEE ALSO
 
@@ -222,7 +229,7 @@ Matteo Cantoni, E<lt>matteo.cantoni@nothink.org<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2009 by Matteo Cantoni
+Copyright (C) 2009,2010 by Matteo Cantoni
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.8.8 or,
